@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Etch a Sketch</title>
+    <script src="Etchasketch.js" defer></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        display: flex; /* Use flex to arrange grid and controls side by side */
+        height: 100vh;
+        background-color: #ffffff;
+      }
+
+      .grid-container {
+        display: grid;
+        gap: 0.8px; /* Optional: Adds a small gap between the squares */
+        width: 100%; /* Adjust the width based on the viewport (dynamic width) */
+        height: 100%; /* Adjust the height based on the viewport (dynamic height) */
+      }
+
+      .grid-item {
+        background-color: #ffffffb1;
+        width: 100%;
+        height: 100%;
+        border: 1px solid black;
+        transition: background-color 0.8s ease; 
+      }
+
+      /* Controls container (buttons/input fields) */
+      .controls {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 20px;
+        gap: 10px;
+        width: 200px; /* Set width for controls section */
+        background-color: #5e5f58; /* Optional background for controls */
+      }
+
+      /* Style for input fields and button */
+      input {
+        padding: 10px;
+        margin-right: 10px;
+        width: 80px; /* Adjust the width of the input */
+      }
+
+      button {
+        padding: 10px 20px; /* Add some padding to the button for size */
+        font-size: 16px; /* Set font size */
+        cursor: pointer; /* Adds a pointer cursor on hover */
+      }
+      label{
+        color:gainsboro;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid-container" id="grid-container"></div>
+
+    <div class="controls">
+      <label for="rows">Rows:</label>
+      <input type="number" id="rows" min="1" value="16" />
+      <label for="columns">Columns:</label>
+      <input type="number" id="columns" min="1" value="16" />
+      <button onclick="updateGrid()">Create Grid</button>
+      <button id="drawbtn" onclick="eraseOrDraw('draw')">Draw</button>
+      <button id="erasebtn" onclick="eraseOrDraw('erase')">Erase</button>
+      <button id="resetbtn" onclick="resetGrid()">Reset</button>
+    </div>
+</body>
+</html>
